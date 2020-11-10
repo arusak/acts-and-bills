@@ -1,0 +1,62 @@
+@import-normalize ;
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    max-width: 700px;
+}
+
+body, h1, h2 {
+    font-size: 15px;
+}
+
+h1, h2 {
+    margin: 0 0 4px 0;
+}
+
+p {
+    text-align: justify;
+    /*margin: 0.5em 0;*/
+}
+
+header {
+    text-align: center;
+}
+
+.place-time {
+    display: flex;
+    justify-content: space-between;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.footer {
+    margin: 28px 0 0 0;
+}
+
+.footer table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+.footer td {
+    border: none;
+    width: 50%;
+    vertical-align: top;
+}
+
+.footer .placeholder {
+    display: inline-block;
+    width: 12em;
+    border-bottom: thin solid #000;
+}
+
+.footer .names {
+    font-weight: bold;
+}
+
+.footer .signature {
+    padding-top: 18px;
+}
