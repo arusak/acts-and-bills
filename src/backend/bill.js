@@ -24,10 +24,11 @@ const fsp = fs.promises;
 
 const printer = new Printer(`http://localhost:${printerPort}/`);
 
-const getCsvFileName = async () => {
-    const files = await fsp.readdir('.');
+const getCsvPath = async () => {
+    const inboundPath = '../../in';
+    const files = await fsp.readdir(inboundPath);
     const csvs = files.filter(v => v.toString().endsWith('.csv'));
-    return csvs.pop();
+    return path.resolve(inboundPath, csvs.pop());
 };
 
 const getNumberOfExistingReports = async (title) => {
@@ -37,13 +38,13 @@ const getNumberOfExistingReports = async (title) => {
 };
 
 (async () => {
-    const csvFileName = await getCsvFileName();
+    const csvFileName = await getCsvPath();
     const reportData = await generateJson(csvFileName);
     const {documentTitle} = getReport(reportData);
     const pdf = await printer.print();
     const existingReports = await getNumberOfExistingReports(documentTitle);
     const fileIndex = existingReports ? ` (${existingReports})` : '';
     const pdfFileName = `${documentTitle}${fileIndex}.pdf`;
-    return fsp.writeFile(path.resolve(pdfFileName), pdf);
+    return fsp.writeFile(path.resolve('../../out', pdfFileName), pdf);
 })();
 

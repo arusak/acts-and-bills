@@ -4,10 +4,10 @@ import {getReport} from '../utils/report-attributes.utils.js';
 
 const fsp = fs.promises;
 
-export const generateJson = async (csvFileName) => {
-    const [rangeStart, rangeEnd] = getRange(csvFileName);
+export const generateJson = async (csvPath) => {
+    const [rangeStart, rangeEnd] = getRange(csvPath);
 
-    const buf = await fsp.readFile(path.resolve(csvFileName));
+    const buf = await fsp.readFile(csvPath);
     const csv = buf.toString();
     const [, ...csvRows] = csv.split('\n');
     const records = csvRows
@@ -31,7 +31,7 @@ export const generateJson = async (csvFileName) => {
         }
         task.hours += cur.hours;
         return res;
-    }, [])//.sort((j1, j2) => j1.taskId.localeCompare(j2.taskId));
+    }, []);//.sort((j1, j2) => j1.taskId.localeCompare(j2.taskId));
 
     let total = tasks.reduce((sum, task) => sum += task.hours, 0);
 
