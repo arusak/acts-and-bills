@@ -1,11 +1,13 @@
-import fs from 'fs/promises';
+import fs from 'fs';
 import path from 'path';
 import {getReport} from '../utils/report-attributes.utils.js';
+
+const fsp = fs.promises;
 
 export const generateJson = async (csvFileName) => {
     const [rangeStart, rangeEnd] = getRange(csvFileName);
 
-    const buf = await fs.readFile(path.resolve(csvFileName));
+    const buf = await fsp.readFile(path.resolve(csvFileName));
     const csv = buf.toString();
     const [, ...csvRows] = csv.split('\n');
     const records = csvRows
@@ -37,7 +39,7 @@ export const generateJson = async (csvFileName) => {
     const report = getReport(result);
 
     const stringified = JSON.stringify(report, null, 2);
-    return fs.writeFile(path.resolve('../..', 'public', 'report.js'), `var reportData = ${stringified};`).then(() => report);
+    return fsp.writeFile(path.resolve('../..', 'public', 'report.js'), `var reportData = ${stringified};`).then(() => report);
 };
 
 const getRange = filename => {
