@@ -8,7 +8,7 @@ const placeholders = {
     ...customReportProps
 };
 
-export function getReport(reportData) {
+export function getReport(reportData, type) {
     let defaults = {
         rangeStart: new Date(),
         rangeEnd: new Date(),
@@ -22,7 +22,7 @@ export function getReport(reportData) {
     const rangeEnd = new Date(reportData.rangeEnd);
     const reportDate = dateFns.startOfMonth(dateFns.addMonths(rangeStart, 1));
 
-    const documentTitle = `${placeholders.customerTitle}_${placeholders.doerTitle}_Акт_${rangeStart.getFullYear()}_${(rangeStart.getMonth() + 1).toLocaleString('ru-RU', {minimumIntegerDigits: 2})}`;
+    const documentTitle = `${placeholders.customerTitle}_${placeholders.doerTitle}_${type}_${rangeStart.getFullYear()}_${(rangeStart.getMonth() + 1).toLocaleString('ru-RU', {minimumIntegerDigits: 2})}`;
 
     return {
         ...reportData, rangeStart, rangeEnd, reportDate, documentTitle, placeholders

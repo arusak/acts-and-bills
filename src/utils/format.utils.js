@@ -19,3 +19,5 @@ export const formatDate = d => new Date(d).toLocaleString('ru-RU', {
     month: 'long',
     year: 'numeric'
 });
+
+export const formatBillNumber = d => new Date(d).toISOString().substr(0, 10).split('-').join('') + '01';

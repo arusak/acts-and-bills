@@ -1,28 +1,35 @@
 {
   "name": "raccoon-bill",
-  "version": "0.1.0",
+  "version": "0.2.0-rc.1",
   "private": true,
   "type": "module",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "autoprefixer": "^10.0.2",
     "connect": "^3.7.0",
     "cross-env": "^7.0.2",
     "date-fns": "^2.16.1",
     "minimist": "^1.2.5",
+    "postcss-cli": "^8.2.0",
     "puppeteer": "^5.3.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "rubles": "^0.2.0",
-    "serve-static": "^1.14.1"
+    "serve-static": "^1.14.1",
+    "tailwindcss": "^1.9.6"
   },
   "scripts": {
-    "start": "cross-env PORT=8888 react-scripts start",
-    "build": "react-scripts build",
+    "run": "cd src/backend && node run",
+    "start": "cross-env PORT=8888 yarn run watch:css && react-scripts start",
+    "build": "yarn watch:css && react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch:css": "postcss src/style/tailwind.css -o public/tailwind.css"
   },
   "eslintConfig": {
     "extends": "react-app"
