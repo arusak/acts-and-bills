@@ -21,5 +21,11 @@ export default {
     customerInn: '7700000000',
     customerKpp: '770101001',
     contractNo: '123',
-    contractDate: '2020-01-01'
+    contractDate: '2020-01-01',
+    priceHistory: [
+        ['2020-01-01', 100],
+        ['2020-04-01', 200],
+        ['2020-07-01', 300],
+        ['2021-10-01', 400],
+    ]
 };
