@@ -7,10 +7,9 @@ import {Switch, Route} from 'react-router';
 import {BrowserRouter} from 'react-router-dom';
 
 function App() {
-    const {reportDate, rangeStart, rangeEnd, total, tasks, placeholders, documentTitle} = window.reportData;
-    const actProps = {reportDate, rangeStart, rangeEnd, total, tasks, placeholders};
-    const billProps = {reportDate, rangeStart, rangeEnd, total, tasks, placeholders};
-    window.document.title = documentTitle;
+    const {reportDate, rangeStart, rangeEnd, total, tasks, placeholders, documentTitle, price} = window.reportData;
+    const actProps = {reportDate, rangeStart, rangeEnd, total, tasks, placeholders, documentTitle, price};
+    const billProps = {reportDate, rangeStart, rangeEnd, total, tasks, placeholders, documentTitle, price};
 
     return (
         <BrowserRouter>

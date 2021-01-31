@@ -2,8 +2,8 @@ import rubles from './rubles';
 
 export const formatHours = a => a.toLocaleString('ru-RU', {
     style: 'decimal',
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
 });
 
 export const formatMoney = a => a.toLocaleString('ru-RU', {

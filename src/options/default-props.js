@@ -1,6 +1,5 @@
 // use this file as template to create custom-props.js
 export default {
-    price: 100,
     doerName: 'Иванов Иван Иванович',
     doerShortName: 'И. И. Иванов',
     doerTitle: 'ИП Иванов',

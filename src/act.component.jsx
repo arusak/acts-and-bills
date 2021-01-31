@@ -2,7 +2,8 @@ import {formatDate, formatHours, formatMoney, formatMoneyTotalInWords} from './u
 import React from 'react';
 
 export const ActComponent = props => {
-    const {reportDate, rangeStart, rangeEnd, total, tasks, placeholders} = props;
+    const {reportDate, rangeStart, rangeEnd, total, tasks, placeholders, price, documentTitle} = props;
+    window.document.title = documentTitle;
     return <>
 
         <header>
@@ -47,17 +48,17 @@ export const ActComponent = props => {
                                 <td className="index">{idx + 1}</td>
                                 <td className="id">{taskId}</td>
                                 {idx === 0 &&
-                                <td className="price" rowSpan={arr.length}>{formatMoney(placeholders.price)}</td>
+                                <td className="price" rowSpan={arr.length}>{formatMoney(price)}</td>
                                 }
                                 <td className="hours">{formatHours(hours)}</td>
-                                <td className="amount">{formatMoney(hours * placeholders.price)}</td>
+                                <td className="amount">{formatMoney(hours * price)}</td>
                             </tr>
                         ))
                     }
                     <tr className="total">
                         <td className="label" colSpan="3">Итого:</td>
                         <td className="hours">{formatHours(total)}</td>
-                        <td className="amount">{formatMoney(total * placeholders.price)}</td>
+                        <td className="amount">{formatMoney(total * price)}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -68,8 +69,8 @@ export const ActComponent = props => {
                 Заказчик претензий по&nbsp;объему, срокам и&nbsp;качеству оказанных услуг и&nbsp;выполненных работ
                 не&nbsp;имеет.</p>
             <p>3. Общая стоимость оказанных услуг и&nbsp;выполненных работ по&nbsp;Заявке
-                составляет {formatMoney(total * placeholders.price).replace(/\s/, '')}&nbsp;руб.
-                ({formatMoneyTotalInWords(total * placeholders.price)}), НДС не&nbsp;облагается в&nbsp;связи
+                составляет {formatMoney(total * price).replace(/\s/, '')}&nbsp;руб.
+                ({formatMoneyTotalInWords(total * price)}), НДС не&nbsp;облагается в&nbsp;связи
                 с&nbsp;применением Исполнителем упрощенной системы налогообложения и&nbsp;подлежит оплате Заказчиком
                 в&nbsp;соответствии с&nbsp;условиями Договора.</p>
             <p>4. Настоящий Акт составлен в&nbsp;2 (двух) экземплярах, по&nbsp;одному экземпляру для Исполнителя
