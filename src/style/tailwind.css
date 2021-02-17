@@ -4,6 +4,14 @@
 
 @tailwind utilities;
 
-.table-cell {
-	@apply border border-solid border-black align-top;
+.x-cell {
+	@apply border border-solid border-black align-top px-1 py-1;
+}
+
+.x-no-bb {
+	@apply border-b-0;
+}
+
+.x-no-bt {
+	@apply border-t-0;
 }
