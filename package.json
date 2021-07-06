@@ -1,6 +1,6 @@
 {
-  "name": "raccoon-bill",
-  "version": "0.2.0-rc.1",
+  "name": "acts-and-bills",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "dependencies": {
