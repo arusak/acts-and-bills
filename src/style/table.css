@@ -1,55 +1,55 @@
 .table {
-    table-layout: fixed;
-    width: 100%;
+	table-layout: fixed;
+	width: 100%;
 }
 
 .table th, .table td {
-    border: thin solid #000;
-    padding: 2px 4px;
+	border: thin solid #000;
+	padding: 2px 4px;
 }
 
 .table th {
-    font-size: 95%;
+	font-size: 95%;
 }
 
 .index,
 .hours,
 .total .label,
 .amount {
-    text-align: right;
+	text-align: right;
 }
 
 .table .index {
-    width: 10px;
+	width: 10px;
 }
 
 .table .id {
-    width: 180px;
+	width: 180px;
 }
 
 .table .hours {
-    padding-right: 70px;
-    width: 140px;
+	padding-right: 70px;
+	width: 140px;
 }
 
 .table .amount {
-    padding-right: 40px;
-    width: 130px;
+	padding-right: 40px;
+	width: 130px;
 }
 
 .table .price {
-    text-align: center;
-    width: 130px;
+	text-align: center;
+	width: 130px;
 }
 
 .table .total {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .table table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
 }
 
 
