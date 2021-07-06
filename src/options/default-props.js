@@ -13,8 +13,6 @@ export default {
         },
         fullAddress: '123456, Россия, г. Москва, ул. Академика Королёва, 12'
     },
-    customerRepresentative: '',
-    customerShortName: '',
     customer: {
         fullName: 'Общество с ограниченной ответственностью «Вектор»',
         shortName: 'ООО «Вектор»',
@@ -29,7 +27,8 @@ export default {
     contract: {
         id: '123',
         date: '2020-01-01',
-        place: 'г. Москва'
+        place: 'г. Москва',
+        ticketIdRegex: /[A-Z]{1,9}-[0-9]{1,6}/
     },
     priceHistory: [
         ['2020-01-01', 100],

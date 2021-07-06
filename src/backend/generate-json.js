@@ -1,22 +1,23 @@
 import fs from 'fs';
 import path from 'path';
-import {getReport} from '../utils/report-attributes.utils.js';
+import {getReport, getTicketIdRegex} from '../utils/report-attributes.utils.js';
 
 const fsp = fs.promises;
-
+const defaultTicketIdRegex = /[A-Z]{1,9}-[0-9]{1,6}/;
 export const generateJson = async (csvPath) => {
     const [rangeStart, rangeEnd] = getRange(csvPath);
 
     const buf = await fsp.readFile(csvPath);
     const csv = buf.toString();
     const [, ...csvRows] = csv.split('\n');
+    const ticketIdRegex = getTicketIdRegex() || defaultTicketIdRegex;
     const records = csvRows
         .filter(row => row.includes(','))
         .map(row => row.split(','))
         .map(([, task, time]) => {
             let [hours, minutes] = time.split(':');
             hours = Number(hours) + Number(minutes) / 60;
-            const [, taskId] = task.match(/((DXREQ|AMP)-[0-9]+)/) || ['', task];
+            const [, taskId] = task.match(ticketIdRegex) || ['', task];
             return ({
                 taskId,
                 hours
