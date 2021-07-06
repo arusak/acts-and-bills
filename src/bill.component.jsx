@@ -5,7 +5,7 @@ export const BillComponent = props => {
     const {reportDate, rangeStart, rangeEnd, total, placeholders, documentTitle, price} = props;
     window.document.title = documentTitle;
     const amount = total * price;
-    const {doer} = placeholders;
+    const {doer, customer, contract} = placeholders;
 
     return <>
         <table className="border-collapse w-full mt-16 mb-4">
@@ -29,15 +29,15 @@ export const BillComponent = props => {
             </tr>
             <tr>
                 <td className="x-cell">
-                    ИНН {placeholders.doerInn}
+                    ИНН {doer.inn}
                 </td>
                 <td className="x-cell w-2/12"/>
                 <td rowSpan={2} className="x-cell">Сч. №</td>
-                <td rowSpan={2} className="x-cell">{placeholders.doer.account}</td>
+                <td rowSpan={2} className="x-cell">{doer.account}</td>
             </tr>
             <tr>
                 <td colSpan={2} className="x-cell">
-                    <span className="uppercase">{placeholders.doerName}</span>
+                    <span className="uppercase">{doer.fullName}</span>
                     <br/>
                     <br/>
                     Получатель
@@ -54,19 +54,19 @@ export const BillComponent = props => {
             <tbody>
             <tr>
                 <td className="pb-2 align-top">Исполнитель:</td>
-                <td className="font-bold pb-2 align-top">ИП {placeholders.doerName},
-                    ИНН {placeholders.doerInn}, {placeholders.doer.fullAddress}
+                <td className="font-bold pb-2 align-top">ИП {placeholders.doer.fullName},
+                    ИНН {doer.inn}, {doer.fullAddress}
                 </td>
             </tr>
             <tr>
                 <td className="pb-2 align-top">Заказчик:</td>
-                <td className="font-bold pb-2 align-top">{placeholders.customer}, ИНН {placeholders.customerInn},
-                    КПП {placeholders.customerKpp}</td>
+                <td className="font-bold pb-2 align-top">{customer.fullName}, ИНН {customer.inn},
+                    КПП {customer.kpp}</td>
             </tr>
             <tr>
                 <td className="pb-2 align-top">Основание:</td>
                 <td className="font-bold pb-2 align-top">Договор
-                    № {placeholders.contractNo} от {formatDate(placeholders.contractDate)}</td>
+                    № {contract.id} от {formatDate(contract.date)}</td>
             </tr>
             </tbody>
         </table>
@@ -111,7 +111,7 @@ export const BillComponent = props => {
 
         <div className="flex justify-between mt-8">
             <div>Индивидуальный предприниматель</div>
-            <div>{placeholders.doerShortName}</div>
+            <div>{doer.shortName}</div>
         </div>
     </>;
 };

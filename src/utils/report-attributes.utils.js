@@ -24,7 +24,7 @@ export function getReport(reportData, type) {
 
     const price = getPriceForDate(placeholders.priceHistory, rangeStart);
 
-    const documentTitle = `${placeholders.customerTitle}_${placeholders.doerTitle}_${type}_${rangeStart.getFullYear()}_${(rangeStart.getMonth() + 1).toLocaleString('ru-RU', {minimumIntegerDigits: 2})}`;
+    const documentTitle = `${placeholders.customer.title}_${placeholders.doer.title}_${type}_${rangeStart.getFullYear()}_${(rangeStart.getMonth() + 1).toLocaleString('ru-RU', {minimumIntegerDigits: 2})}`;
 
     return {
         ...reportData, rangeStart, rangeEnd, reportDate, documentTitle, placeholders, price

@@ -3,28 +3,29 @@ import React from 'react';
 
 export const ActComponent = props => {
     const {reportDate, rangeStart, rangeEnd, total, tasks, placeholders, price, documentTitle} = props;
+    const {contract, customer, doer} = placeholders;
     window.document.title = documentTitle;
-    return <>
 
+    return <>
         <header>
             <h1>АКТ</h1>
             <h2>оказанных услуг и выполненных работ</h2>
             <div className="place-time">
-                <div className="place">г. Санкт-Петербург</div>
+                <div className="place">{contract.place}</div>
                 <div className="time">{formatDate(reportDate)}</div>
             </div>
         </header>
         <main>
             <p>
-                <strong>{placeholders.customer}</strong>, именуемое в&nbsp;дальнейшем&nbsp;—
-                «Заказчик», {placeholders.customerRepresentative} с&nbsp;одной стороны, и
+                <strong>{customer.fullName}</strong>, именуемое в&nbsp;дальнейшем&nbsp;—
+                «Заказчик», {customer.representative.fullString} с&nbsp;одной стороны, и
             </p>
-            <p><strong>Индивидуальный предприниматель {placeholders.doerName}</strong>, именуемый
+            <p><strong>Индивидуальный предприниматель {doer.fullName}</strong>, именуемый
                 в&nbsp;дальнейшем&nbsp;— «Исполнитель», с&nbsp;другой стороны, совместно именуемые
                 в&nbsp;дальнейшем&nbsp;— «Стороны»,
                 а&nbsp;по&nbsp;отдельности&nbsp;— «Сторона», составили настоящий Акт оказанных
                 услуг и&nbsp;выполненных работ, именуемый в&nbsp;дальнейшем&nbsp;— «Акт»,
-                к&nbsp;Договору &#8470;&nbsp;{placeholders.contractNo} от {formatDate(placeholders.contractDate)},
+                к&nbsp;Договору &#8470;&nbsp;{contract.id} от {formatDate(contract.date)},
                 именуемому в&nbsp;дальнейшем&nbsp;— «Договор», о&nbsp;нижеследующем:</p>
             <p>1. Во&nbsp;исполнение п.п.&nbsp;1.1., 1.2. Договора, Исполнитель
                 в&nbsp;период <strong>с&nbsp;<span className="no-wrap">{formatDate(rangeStart)}</span>{' '}
@@ -84,19 +85,19 @@ export const ActComponent = props => {
                     <td>Исполнитель:</td>
                 </tr>
                 <tr className="names">
-                    <td>ООО «Элис»</td>
+                    <td>{customer.shortName}</td>
                     <td>Индивидуальный предприниматель<br/>
-                        {placeholders.doerName}
+                        {doer.fullName}
                     </td>
                 </tr>
                 <tr>
                     <td className="signature">
                         <span className="placeholder"/>
-                        <span className="value">/{placeholders.customerShortName}/</span>
+                        <span className="value"> / {customer.representative.shortName} /</span>
                     </td>
                     <td className="signature">
                         <span className="placeholder"/>
-                        <span className="value">/{placeholders.doerShortName}/</span>
+                        <span className="value"> / {doer.shortName} /</span>
                     </td>
                 </tr>
                 <tr>
